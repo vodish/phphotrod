@@ -9,7 +9,7 @@ spl_autoload_register( function($name) {
     
     if ( is_dir($dir = __DIR__.'/'.$name)  && is_file($file = "$dir/$name.php") )
     {}
-    elseif ( ($e = explode('_', $name))  && !empty($e[1]) )
+    elseif ( ($e = explode('_', $name))  && !empty($e[1])  && !is_file(__DIR__."/$name.php") )
     {
         $dir    =   array_slice($e, 1);
         $dir    =   implode('/', $dir);
@@ -20,8 +20,7 @@ spl_autoload_register( function($name) {
         $file   =   __DIR__. "/$name.php";
     }
     
-    
-    if ( is_file($file) )   require_once $file;
+    require_once $file;
 });
 
 
