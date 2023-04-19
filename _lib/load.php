@@ -9,9 +9,9 @@ class load
     static	$title;
     
 
-
     static function renderpage()
     {
+		
         do {
             self::$tpl      =   self::$layout;
             ob_start();

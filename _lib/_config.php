@@ -5,7 +5,7 @@ error_reporting(E_ALL | E_NOTICE);
 ini_set('display_errors','On');
 
 
-# autoload class by use from current dir
+# autoload class from current dir
 #
 spl_autoload_register( function($name) {
     
@@ -15,7 +15,7 @@ spl_autoload_register( function($name) {
     {
         $dir    =   array_slice($e, 1);
         $dir    =   implode('/', $dir);
-        $file   =   __DIR__. '/' .$dir. '/'. $name. '.php';
+        $file   =   __DIR__. "/$dir/$name.php";
     }
     else
     {
@@ -32,11 +32,11 @@ spl_autoload_register( function($name) {
 url::$url       =   url::parse($_SERVER['REQUEST_URI']);
 
 
-# set template dirpath
+# set template dirpath for class `load`
 # set start layout file_name (and adds project setting)
-# render html output
+# render output
 #
-load::$dirtpl   =   dirname($_SERVER['DOCUMENT_ROOT']). '/tpl';
+load::$dirtpl   =   $_SERVER['DOCUMENT_ROOT']. '/../tpl';
 #
 load::$layout   =   require_once  load::$dirtpl. '/_route.php';
 #
