@@ -1,6 +1,4 @@
 <?php
-session_start();
-
 error_reporting(E_ALL | E_NOTICE);
 ini_set('display_errors','On');
 
@@ -27,8 +25,9 @@ spl_autoload_register( function($name) {
 });
 
 
-# optional global vars
+# optional global settings
 #
+session_start();
 url::$url       =   url::parse($_SERVER['REQUEST_URI']);
 
 

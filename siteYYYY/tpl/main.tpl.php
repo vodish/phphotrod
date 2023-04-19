@@ -1,10 +1,6 @@
 <?php
 load::$layout   =   'default.tpl.php';
 load::$title    =   'Site YYYY';
-
-// load::pr(__NAMESPACE__);
-// die;
-
 ?>
 
 
