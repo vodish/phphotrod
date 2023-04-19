@@ -21,4 +21,3 @@ load::$title    =   'Site YYYY';
 
 <h3>Specific class for siteYYYY</h3>
 <?= user_sYY::getName() ?>
-
