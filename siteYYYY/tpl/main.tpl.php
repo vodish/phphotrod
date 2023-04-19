@@ -10,13 +10,15 @@ load::$title    =   'Site YYYY';
 
 <h1>Php Hot Rod</h1>
 
-<p>SiteYYYY main page</p>
+<div>SiteYYYY main page</div>
 
 <p><a href="/next">Next Page</a></p>
 
-<br />
-<br />
+<hr />
 
 <h3>Basic class for siteYYYY</h3>
-<p><? sYY::test()?></p>
+<div><? sYY::test()?></div>
+
+<h3>Specific class for siteYYYY</h3>
+<?= user_sYY::getName() ?>
 
