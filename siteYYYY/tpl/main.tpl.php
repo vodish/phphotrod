@@ -4,6 +4,7 @@ load::$title    =   'Site YYYY';
 
 // load::pr(__NAMESPACE__);
 // die;
+
 ?>
 
 
@@ -17,15 +18,5 @@ load::$title    =   'Site YYYY';
 <br />
 
 <h3>Basic class for siteYYYY</h3>
-<p><? siteYYYY::foo()?></p>
-
-<h3>Composer from</h3>
-<p>
-<?
-$autoload   =   __DIR__.'/../../vendor/autoload.php';
-load::pr($autoload);
-require_once $autoload;
-?>
-</p>
-
+<p><? sYY::test()?></p>
 

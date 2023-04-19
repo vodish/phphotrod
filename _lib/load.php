@@ -5,7 +5,7 @@ class load
     static	$layout;
 	static	$tpl;
 	static	$body;
-    
+	
     static	$title;
     
 

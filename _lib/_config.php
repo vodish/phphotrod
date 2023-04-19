@@ -7,16 +7,23 @@ ini_set('display_errors','On');
 
 # autoload class by use from current dir
 #
-spl_autoload_register( function ($name) {
+spl_autoload_register( function($name) {
     
-    $name   =   strtr($name, ['\\'=>'/']);
-    $file   =   dirname(__FILE__). '/' .$name. '.php';
+    if ( is_dir($dir = __DIR__.'/'.$name)  && is_file($file = "$dir/$name.php") )
+    {}
+    elseif ( ($e = explode('_', $name))  && !empty($e[1]) )
+    {
+        $dir    =   array_slice($e, 1);
+        $dir    =   implode('/', $dir);
+        $file   =   __DIR__. '/' .$dir. '/'. $name. '.php';
+    }
+    else
+    {
+        $file   =   __DIR__. "/$name.php";
+    }
     
-    print_r($file); echo "<br>";
     
-    if ( !file_exists($file) )    return ;
-    
-    require_once $file;
+    if ( is_file($file) )   require_once $file;
 });
 
 
@@ -34,3 +41,4 @@ load::$dirtpl   =   dirname($_SERVER['DOCUMENT_ROOT']). '/tpl';
 load::$layout   =   require_once  load::$dirtpl. '/_route.php';
 #
 load::renderpage();
+
