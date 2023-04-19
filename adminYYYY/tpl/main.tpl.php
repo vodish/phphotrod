@@ -5,8 +5,7 @@ load::$title    =   'Admin YYYY';
 
 
 <h1>Php Hot Rod - Admin</h1>
-
-<p>Admin main page</p>
+<div>Admin main page</div>
 
 <p><a href="/next">Next Page</a></p>
 
