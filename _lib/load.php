@@ -91,6 +91,21 @@ class load
 	}
 	
 	
+	static function pr($var, $var_damp=false, $die=false)
+	{
+	    if ( !$var_damp )
+	    {
+	        echo '<pre style="max-width: 90%; overflow: auto;">'; print_r($var); echo '</pre>';
+	    }
+	    else {
+	        echo '<pre style="max-width: 90%; overflow: auto;">'; var_dump($var); echo '</pre>';
+	    }
+	    
+	    if ( $die )    die;
+	}
+	
+	
+	
 	
 	static function getprotocol()
 	{
@@ -137,19 +152,6 @@ class load
 	}
 	
 	
-	
-	static function dump($var, $var_damp=false, $die=false)
-	{
-	    if ( !$var_damp )
-	    {
-	        echo '<pre style="max-width: 90%; overflow: auto;">'; print_r($var); echo '</pre>';
-	    }
-	    else {
-	        echo '<pre style="max-width: 90%; overflow: auto;">'; var_dump($var); echo '</pre>';
-	    }
-	    
-	    if ( $die )    die;
-	}
 	
 	
 }

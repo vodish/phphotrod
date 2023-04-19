@@ -10,7 +10,9 @@ ini_set('display_errors','On');
 spl_autoload_register( function ($name) {
     
     $name   =   strtr($name, ['\\'=>'/']);
-    $file   =   dirname(__FILE__). '/' .$name. '.cls.php';
+    $file   =   dirname(__FILE__). '/' .$name. '.php';
+    
+    print_r($file); echo "<br>";
     
     if ( !file_exists($file) )    return ;
     
@@ -21,8 +23,6 @@ spl_autoload_register( function ($name) {
 # optional global vars
 #
 url::$url       =   url::parse($_SERVER['REQUEST_URI']);
-
-
 
 
 # set template dirpath
