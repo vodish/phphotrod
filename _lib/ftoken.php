@@ -1,10 +1,9 @@
 <?php
 class ftoken
 {
-    static $limit = 15;
-
-
-    static function set()
+    # 1. print tag input with token value for tag form
+    #
+    static function input()
     {
         $token  =   md5( session_id(). time() );
         
@@ -19,12 +18,24 @@ class ftoken
         }, $token, 1);
         
         
-        for($c=count($_SESSION['ftoken']);  $c > self::$limit;  $c--)
+        for($c=count($_SESSION['ftoken']);  $c > 15;  $c--)
         {
             array_shift($_SESSION['ftoken']);
         }
         
+
         return '<input type="hidden" name="t" value="' .$token. '" />';
     }
+
+    
+    # 2. use decode token in js file
+    #
+    /*
+    $(document).ready(()=>{
+        $('form>input[name="t"]').each(function(){
+        this.value  =   this.value.match( new RegExp(".{1," + this.value.match(/[3-9]/)[0] + "}", "g") ).reverse().join('')
+        })
+    })
+    */
 
 }
