@@ -76,7 +76,7 @@ class kfilter
         if ( empty(trim($string)) )     return array();
         
         
-//         load::print_r($string);
+//         load::ddint_r($string);
         
         # экранирование
         $escape0    =   array('\;'=>"\rE1\r", '\,'=>"\rE2\r", '\('=>"\rE3\r",  '\)'=>"\rE4\r",);
@@ -104,8 +104,8 @@ class kfilter
         
         
         
-//         load::print_r($group);
-//         load::print_r('<hr />');
+//         load::ddint_r($group);
+//         load::ddint_r('<hr />');
         
         # распарсить объекты
         #
@@ -212,7 +212,7 @@ class kfilter
         }
         
         
-        //load::print_r($parse);
+        //load::ddint_r($parse);
     }
     #
     #
@@ -269,8 +269,8 @@ class kfilter
         
         
 //         ob_clean();
-//         load::print_r($this->where);
-//         load::print_r($sql);
+//         load::ddint_r($this->where);
+//         load::ddint_r($sql);
 //         die;
         
         

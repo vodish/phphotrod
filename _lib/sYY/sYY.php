@@ -3,8 +3,8 @@ class sYY
 {
     static function test()
     {
-        load::pr("method " .__METHOD__);
-        load::pr(time());
+        load::dd("method " .__METHOD__);
+        load::dd(time());
     }
     
     static function composerAutoload()
