@@ -24,7 +24,7 @@ class ftoken
         }
         
 
-        return '<input type="hidden" name="t" value="' .$token. '" />';
+        return '<input type="hidden" name="t" value="' .$token. '" />' ."\n";
     }
 
     

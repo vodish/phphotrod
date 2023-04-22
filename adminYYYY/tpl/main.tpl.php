@@ -11,3 +11,8 @@ load::$title    =   'Admin YYYY';
 
 <h3>Admin name is "<?= aYY::$admin->getName() ?>" from global class "<?= aYY::class ?>"</h3>
 
+<form action="">
+    <h3>Ftoken for tag form</h3>
+    <?= ftoken::input() ?>
+    <?// load::dd($_SESSION) ?>
+</form>
