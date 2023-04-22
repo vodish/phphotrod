@@ -91,7 +91,7 @@ class load
 	}
 	
 	
-	static function pr($var, $var_damp=false, $die=false)
+	static function dd($var, $var_damp=false, $die=false)
 	{
 	    if ( !$var_damp )
 	    {

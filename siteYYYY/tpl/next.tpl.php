@@ -1,6 +1,7 @@
 <?php
 load::$layout   =   'default.tpl.php';
 load::$title    =   'Next Page';
+
 ?>
 
 
@@ -8,3 +9,4 @@ load::$title    =   'Next Page';
 
 
 <p><a href="/">Back to main</a></p>
+
