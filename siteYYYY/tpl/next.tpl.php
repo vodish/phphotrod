@@ -9,4 +9,3 @@ load::$title    =   'Next Page';
 
 
 <p><a href="/">Back to main</a></p>
-

@@ -11,8 +11,7 @@ class load
 
     static function renderpage()
     {
-		
-        do {
+		do {
             self::$tpl      =   self::$layout;
             ob_start();
             require_once        self::$dirtpl. '/' .self::$layout;
@@ -20,15 +19,10 @@ class load
         }
         while (self::$tpl != self::$layout);
         
-        
         die( self::$body );
     }
     
     
-    
-    
-    
-	
 	
 	static function makefile($file, $tpl, $addtime=true, $php=true)
 	{
@@ -79,9 +73,7 @@ class load
 	}
 	
 	
-	
-	
-	
+
     static function redir($url, $code='')
 	{
 	    if ( $code==301 )      header('HTTP/1.1 301 Moved Permanently');
@@ -91,6 +83,7 @@ class load
 	}
 	
 	
+
 	static function dd($var, $var_damp=false, $die=false)
 	{
 	    if ( !$var_damp )
@@ -106,51 +99,21 @@ class load
 	
 	
 	
-	
-	static function getprotocol()
+	static function setcookie($name, $value, $time=false, $host=null)
 	{
-	    return 'http'. (!empty($_SERVER['HTTPS']) && 'off' !== strtolower($_SERVER['HTTPS'])?  's'  :  ''). '://';
-	}
-	
-	static function gethost()
-	{
-	    $host	=	$_SERVER['HTTP_HOST'];
-	    $host	=	preg_replace('#:\d+$#', '', $host); #убрать порт
-	    return $host;
-	}
-	
-	static function getsite()
-	{
-	    return  self::getprotocol(). self::gethost();
-	}
-	
-	
-	
-	static function setcookie($name, $value, $lifetime=false, $host='')
-	{
-		$year	=	2 + date('Y');
-		$host	=	$host?  $host:  null;
+		$time	=	$time ?  time()+$time :  mktime( 1, 1, 1, 1, 1, 2+date('Y') );
+
+		$t		=	setcookie($name, $value, $time, '/', $host);
 		
-		if ($lifetime)
-		{
-            $t = setcookie ($name, $value,time()+$lifetime, '/', $host);
-        }
-        else {
-            $t = setcookie($name, $value, mktime(1, 1, 1, 1, 1, $year), '/', $host);
-        }
-        
         return $t;
 	}
 	
-	static function delcookie($name, $host='')
+	static function delcookie($name, $host=null)
 	{
-	    $host  =	$host?  $host:  null;
-	    
 	    $t	   =	setcookie($name, '', (time()-1), '/', $host);
 		
 		return $t;
 	}
-	
 	
 	
 	

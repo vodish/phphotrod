@@ -249,16 +249,16 @@ class kfilter
                 
                 if ( $v['oper'] == 'IN' )
                 {
-                    foreach ($v['value'] as &$value)    $value = load::$db->v($value);
+                    foreach ($v['value'] as &$value)    $value = db::$db->v($value);
                     
                     $v['value'] =   "(" .implode(', ', $v['value']). ")";
                 }
                 elseif ( $v['oper'] == 'BETWEEN'  && isset($v['value'][0])  && isset($v['value'][1]) )
                 {
-                    $v['value'] =   load::$db->v($v['value'][0]). ' AND ' .load::$db->v($v['value'][1]);
+                    $v['value'] =   db::$db->v($v['value'][0]). ' AND ' .db::$db->v($v['value'][1]);
                 }
                 else {
-                    $v['value'] =   load::$db->v( implode('', $v['value']), 'str' );
+                    $v['value'] =   db::$db->v( implode('', $v['value']), 'str' );
                 }
                 
                 
@@ -371,7 +371,7 @@ class kfilter
             {
                 $oper   =   !in_array($v['oper'], ['=', 'IN'])?  $v['oper'].',':  ''; 
                 
-                return  $oper. load::$db->v2input( implode(',', $v['value']) );
+                return  $oper. db::$db->v2input( implode(',', $v['value']) );
             }
         }
         
@@ -442,7 +442,7 @@ class kfilter
             	    	<input class="value limit" type="text" value="<?= $this->page+1 ?>" id="kPage" />
             	    </div>
             	    <div class="field">
-            	    	<div class="name name1"><a href="<?= load::$url['p0'] ?>">Сбросить фильтр</a></div>
+            	    	<div class="name name1"><a href="<?= url::$url['p0'] ?>">Сбросить фильтр</a></div>
             	    </div>
             	</div>
         	</div>

@@ -6,32 +6,19 @@ class url
     
     static function parse($url)
     {
-        $parse         =   parse_url($url);
-        $parse['dir']  =   $parse['path']=='/'?  array():  explode('/', trim($parse['path'], '/') );
+        $parse  =   parse_url($url);
+        $parse['query'  ]   =   $query  =  $parse['query'] ?? null;
+        $parse['dir'    ]   =   array();
+        $parse['level'  ]   =   $parse['path']=='/'?  array():  explode('/', trim($parse['path'], '/'));
         
+        # query params
+        parse_str($query ?? '', $parse['query']);
         
-        # get params
-        #
-        if ( isset($parse['query']) )
-        {
-            parse_str($parse['query'], $parse['query']);
-        }
-        else {
-            $parse['query']    =   array();
-        }
+        # dir path
+        $dir    =   '';
+        foreach ($parse['level'] as $k => $v)  $parse['dir'][$k]  =  $dir .= '/' .$v;
         
-        
-        # path levels
-        #
-        $path           =   '';
-        $parse['p0']    =   '/';
-        #
-        foreach ($parse['dir'] as $k => $v)
-        {
-            $parse['p'.$k] = $path .= '/' .$v;
-        }
-        
-        
+
         return $parse;
     }
 
@@ -47,7 +34,7 @@ class url
     
     static function fset( $arr=array(), $get=array() )
     {
-        $get   =   empty(self::$query) || $get===null?  array():  self::$query;
+        $get   =   empty(self::$url) || $get===null?  array():  self::$url;
         
         foreach ($arr as $k=>$v)
         {
@@ -65,4 +52,23 @@ class url
         return  ($get? '?': ''). http_build_query($get);
     }
     
+
+
+	static function protocol()
+	{
+	    return 'http'. (!empty($_SERVER['HTTPS']) && 'off' !== strtolower($_SERVER['HTTPS'])?  's'  :  ''). '://';
+	}
+	
+	static function host()
+	{
+	    return  preg_replace('#:\d+$#', '', $_SERVER['HTTP_HOST']);
+	}
+	
+	static function site()
+	{
+	    return  self::protocol(). self::host();
+	}
+	
+	
+
 }
