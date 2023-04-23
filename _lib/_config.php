@@ -30,6 +30,8 @@ session_start();
 url::$url       =   url::parse($_SERVER['REQUEST_URI']);
 
 
+
+
 # set template dirpath for class `load`
 # set start layout file_name (and adds project setting)
 # render output
