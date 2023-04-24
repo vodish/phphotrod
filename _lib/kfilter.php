@@ -76,7 +76,7 @@ class kfilter
         if ( empty(trim($string)) )     return array();
         
         
-//         load::ddint_r($string);
+        // load::ddint_r($string);
         
         # экранирование
         $escape0    =   array('\;'=>"\rE1\r", '\,'=>"\rE2\r", '\('=>"\rE3\r",  '\)'=>"\rE4\r",);
@@ -103,9 +103,6 @@ class kfilter
         $group[$gn] = $string;
         
         
-        
-//         load::ddint_r($group);
-//         load::ddint_r('<hr />');
         
         # распарсить объекты
         #
