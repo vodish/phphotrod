@@ -84,15 +84,16 @@ class load
 	
 	
 
-	static function dd($var, $var_damp=false, $die=false)
+	static function d($var, $die=false)
 	{
-	    if ( !$var_damp )
-	    {
-	        echo '<pre style="max-width: 90%; overflow: auto;">'; print_r($var); echo '</pre>';
-	    }
-	    else {
-	        echo '<pre style="max-width: 90%; overflow: auto;">'; var_dump($var); echo '</pre>';
-	    }
+	    echo '<pre style="max-width: 90%; overflow: auto;">'; print_r($var); echo '</pre>';
+	    
+	    if ( $die )    die;
+	}
+	
+	static function dd($var, $die=false)
+	{
+	    echo '<pre style="max-width: 90%; overflow: auto;">'; var_dump($var); echo '</pre>';
 	    
 	    if ( $die )    die;
 	}
@@ -103,16 +104,12 @@ class load
 	{
 		$time	=	$time ?  time()+$time :  mktime( 1, 1, 1, 1, 1, 2+date('Y') );
 
-		$t		=	setcookie($name, $value, $time, '/', $host);
-		
-        return $t;
+        return  setcookie($name, $value, $time, '/', $host);
 	}
 	
 	static function delcookie($name, $host=null)
 	{
-	    $t	   =	setcookie($name, '', (time()-1), '/', $host);
-		
-		return $t;
+	    return  setcookie($name, '', (time()-1), '/', $host);
 	}
 	
 	

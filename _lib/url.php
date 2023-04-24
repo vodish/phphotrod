@@ -1,10 +1,13 @@
 <?php
 class url
 {
-    static $url;
+    static $path;
+    static $query;
+    static $dir;
+    static $level;
     
     
-    static function parse($url)
+    static function parse( $url,  $static=false )
     {
         $parse  =   parse_url($url);
         $parse['query'  ]   =   $query  =  $parse['query'] ?? null;
@@ -19,22 +22,31 @@ class url
         foreach ($parse['level'] as $k => $v)  $parse['dir'][$k]  =  $dir .= '/' .$v;
         
 
+        # set static value
+        if ( $static )
+        {
+            self::$path     =   $parse['path'];
+            self::$query    =   $parse['query'];
+            self::$dir      =   $parse['dir'];
+            self::$level    =   $parse['level'];
+        }
+
         return $parse;
     }
 
     
-    static function start($str)
+    static function start( $str )
     {
         $strlen =   strlen($str);
-        $start  =   substr(self::$url['path'], 0, $strlen);
+        $start  =   substr(self::$path, 0, $strlen);
         
         return  $str == $start;
     }
     
     
-    static function fset( $arr=array(), $get=array() )
+    static function fset( $arr=array(),  $get=array() )
     {
-        $get   =   empty(self::$url) || $get===null?  array():  self::$url;
+        $get   =   self::$query;
         
         foreach ($arr as $k=>$v)
         {

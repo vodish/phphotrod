@@ -27,7 +27,7 @@ spl_autoload_register( function($name) {
 # optional global settings
 #
 session_start();
-url::$url       =   url::parse($_SERVER['REQUEST_URI']);
+url::parse($_SERVER['REQUEST_URI'], true);
 
 
 
