@@ -442,7 +442,7 @@ class kfilter
             	    	<input class="value limit" type="text" value="<?= $this->page+1 ?>" id="kPage" />
             	    </div>
             	    <div class="field">
-            	    	<div class="name name1"><a href="<?= url::$url['p0'] ?>">Сбросить фильтр</a></div>
+            	    	<div class="name name1"><a href="<?= url::$dir[0] ?>">Сбросить фильтр</a></div>
             	    </div>
             	</div>
         	</div>
