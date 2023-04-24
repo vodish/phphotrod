@@ -1,6 +1,7 @@
 <?php
 class db
 {
+    /** @var db_pdo */
     static $db;
     
     static function init()

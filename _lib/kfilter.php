@@ -103,7 +103,7 @@ class kfilter
         $group[$gn] = $string;
         
         
-        
+
         # распарсить объекты
         #
         foreach ($group as &$objects)
@@ -238,45 +238,43 @@ class kfilter
         
         foreach ($this->where as $v)
         {
-            if ( isset($v['field']) )
+            
+            if ( !isset($v['field']) )                  continue;
+            if ( !isset($this->field[ $v['field'] ]) )  continue;
+            if ( !in_array($v['oper'], $oper) )         continue;
+            
+            
+            if ( $v['oper'] == 'IN' )
             {
-                if ( !isset($this->field[ $v['field'] ]) )  continue;
-                if ( !in_array($v['oper'], $oper) )         continue;
+                foreach ($v['value'] as &$value)    $value = db::v($value);
                 
-                
-                if ( $v['oper'] == 'IN' )
-                {
-                    foreach ($v['value'] as &$value)    $value = db::$db->v($value);
-                    
-                    $v['value'] =   "(" .implode(', ', $v['value']). ")";
-                }
-                elseif ( $v['oper'] == 'BETWEEN'  && isset($v['value'][0])  && isset($v['value'][1]) )
-                {
-                    $v['value'] =   db::$db->v($v['value'][0]). ' AND ' .db::$db->v($v['value'][1]);
-                }
-                else {
-                    $v['value'] =   db::$db->v( implode('', $v['value']), 'str' );
-                }
-                
-                
-                $sql    .=  $sql?  $indent. 'AND ':  $indent; 
-                $sql    .=  $this->field[ $v['field'] ]['where']. ' ' .$v['oper']. ' ' .$v['value']. "\n"; 
+                $v['value'] =   "(" .implode(', ', $v['value']). ")";
             }
+            elseif ( $v['oper'] == 'BETWEEN'  && isset($v['value'][0])  && isset($v['value'][1]) )
+            {
+                $v['value'] =   db::v($v['value'][0]). ' AND ' .db::v($v['value'][1]);
+            }
+            else {
+                $v['value'] =   db::v(implode('', $v['value']), 'str');
+            }
+            
+            
+            $sql    .=  $sql?  $indent. 'AND ':  $indent; 
+            $sql    .=  $this->field[ $v['field'] ]['where']. ' ' .$v['oper']. ' ' .$v['value']. "\n"; 
+            
         }
         
         
-//         ob_clean();
-//         load::ddint_r($this->where);
-//         load::ddint_r($sql);
-//         die;
+        // ob_clean();
+        // load::ddint_r($this->where);
+        // load::ddint_r($sql);
+        // die;
         
         
-        
+        # вернуть секцию sql
+        #
         if ( empty($sql) )  return '';
-        
-        
-        
-        # sql итоговый
+        #
         #
         $sql    =   "WHERE". "\n" .$sql;
         
@@ -368,7 +366,7 @@ class kfilter
             {
                 $oper   =   !in_array($v['oper'], ['=', 'IN'])?  $v['oper'].',':  ''; 
                 
-                return  $oper. db::$db->v2input( implode(',', $v['value']) );
+                return  $oper. db::v2input( implode(',', $v['value']) );
             }
         }
         
