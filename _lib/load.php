@@ -84,7 +84,7 @@ class load
 	
 	
 
-	static function vd($var, $die=false)
+	static function vd($var=null, $die=false)
 	{
 		$backtrace	=	debug_backtrace();
     	$backtrace	=	array_reverse($backtrace);
