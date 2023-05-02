@@ -84,21 +84,31 @@ class load
 	
 	
 
-	static function vd($var=null, $die=false, $dump=false)
+	static function vd($var=null, $print_r=true)
 	{
-		$backtrace	=	debug_backtrace();
-    	$backtrace	=	array_reverse($backtrace);
-		
-	    echo '<pre style="max-width: 90%; overflow: auto;">';
-
-			foreach ($backtrace as $v)   echo $v['file']. ': ' .$v['line']. "\n";
-			
-			if ($dump==false)	print_r($var);
-			else 				var_dump($var);
-
-		echo '</pre>';
+	    $backtrace	=	debug_backtrace();
+        
+        echo '<pre style="max-width: 90%; overflow: auto;">';
+        
+        echo $backtrace[0]['file']. ': ' .$backtrace[0]['line']. "\n";
+        $print_r ?  print_r($var) :  var_dump($var);
+        
+        echo '</pre>';
 	    
-	    if ( $die )    die;
+	}
+	
+	static function vdd($var=null, $print_r=true)
+	{
+	    $backtrace	=	debug_backtrace();
+	    
+        echo '<pre style="max-width: 90%; overflow: auto;">';
+        
+        echo $backtrace[0]['file']. ': ' .$backtrace[0]['line']. "\n";
+        $print_r ?  print_r($var) :  var_dump($var);
+        
+        echo '</pre>';
+	    
+	    die;
 	}
 	
 	
