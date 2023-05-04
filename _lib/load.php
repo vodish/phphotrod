@@ -80,6 +80,7 @@ class load
         echo '<pre style="max-width: 90%; overflow: auto;">';
         
         echo $backtrace[0]['file']. ': ' .$backtrace[0]['line']. "\n";
+
         $print_r ?  print_r($var) :  var_dump($var);
         
         echo '</pre>';
@@ -93,6 +94,7 @@ class load
         echo '<pre style="max-width: 90%; overflow: auto;">';
         
         echo $backtrace[0]['file']. ': ' .$backtrace[0]['line']. "\n";
+		
         $print_r ?  print_r($var) :  var_dump($var);
         
         echo '</pre>';
