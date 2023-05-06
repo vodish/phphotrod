@@ -76,7 +76,7 @@ class kfilter
         if ( empty(trim($string)) )     return array();
         
         
-        // load::ddint_r($string);
+        // load::vd($string);
         
         # экранирование
         $escape0    =   array('\;'=>"\rE1\r", '\,'=>"\rE2\r", '\('=>"\rE3\r",  '\)'=>"\rE4\r",);
@@ -209,7 +209,7 @@ class kfilter
         }
         
         
-        //load::ddint_r($parse);
+        //load::vd($parse);
     }
     #
     #
@@ -266,8 +266,8 @@ class kfilter
         
         
         // ob_clean();
-        // load::ddint_r($this->where);
-        // load::ddint_r($sql);
+        // load::vd($this->where);
+        // load::vd($sql);
         // die;
         
         

@@ -14,5 +14,5 @@ load::$title    =   'Admin YYYY';
 <form action="">
     <h3>Ftoken for tag form</h3>
     <?= ftoken::input() ?>
-    <?// load::dd($_SESSION) ?>
+    <?// load::vd($_SESSION) ?>
 </form>
